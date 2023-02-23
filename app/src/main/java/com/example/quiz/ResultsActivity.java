@@ -37,7 +37,7 @@ public class ResultsActivity extends AppCompatActivity {
     View.OnClickListener retryListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            finish();
+            finish(); // return to MainActivity
         }
     };
 }

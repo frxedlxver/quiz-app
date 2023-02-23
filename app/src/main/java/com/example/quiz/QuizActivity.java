@@ -2,12 +2,14 @@ package com.example.quiz;
 
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -76,14 +78,16 @@ public class QuizActivity extends AppCompatActivity {
         progressView.setText(String.format(Locale.CANADA, "%d / %d", progress, questionTotal));
     }
 
-    private void playFlashingColorAnimation(int flashColor) {
+    private ValueAnimator flashingColorAnimation(int flashColor) {
         int mainColor = getColor(R.color.white);
 
 
         // from https://stackoverflow.com/questions/2614545/animate-change-of-view-background-color-on-android
-        ValueAnimator colorAnimation1 = ValueAnimator.ofObject(new ArgbEvaluator(), mainColor, flashColor);
-        colorAnimation1.setDuration(250); // milliseconds
-        colorAnimation1.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+        ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), mainColor, flashColor);
+        colorAnimation.setDuration(250); // milliseconds
+        colorAnimation.setRepeatCount(1);
+        colorAnimation.setRepeatMode(ValueAnimator.REVERSE);
+        colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 
             @Override
             public void onAnimationUpdate(ValueAnimator animator) {
@@ -92,27 +96,22 @@ public class QuizActivity extends AppCompatActivity {
 
         });
 
-        ValueAnimator colorAnimation2 = ValueAnimator.ofObject(new ArgbEvaluator(), flashColor, mainColor);
-        colorAnimation2.setDuration(250); // milliseconds
-        colorAnimation2.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-
-            @Override
-            public void onAnimationUpdate(ValueAnimator animator) {
-                findViewById(R.id.questionDisplay).setBackgroundColor((int) animator.getAnimatedValue());
-            }
-
-        });
-
-        colorAnimation1.start();
-        colorAnimation2.start();
+        return colorAnimation;
     }
 
+    // make screen flash red and shake
     private void playIncorrectAnimation() {
-        playFlashingColorAnimation(getColor(R.color.red));
+
+        flashingColorAnimation(getColor(R.color.red));
+
+        findViewById(R.id.questionAnswerWrapper).startAnimation(
+                        AnimationUtils.loadAnimation(getApplicationContext(), R.anim.screen_shake));
+
     }
 
+    // make screen flash green
     private void playCorrectAnimation() {
-        playFlashingColorAnimation(getColor(R.color.green));
+        flashingColorAnimation(getColor(R.color.green));
     }
 
     View.OnClickListener answerButtonListener = new View.OnClickListener() {
@@ -136,7 +135,7 @@ public class QuizActivity extends AppCompatActivity {
             if (progress < questionTotal ) {
                 displayNextQuestion();
             } else {
-                // package score and username in new intent
+                // package score and username in new intent to pass to next activity
                 Intent resultsIntent = new Intent(QuizActivity.this, ResultsActivity.class);
                 resultsIntent.putExtra("score", score);
                 resultsIntent.putExtra("userName", getIntent().getStringExtra("userName"));
