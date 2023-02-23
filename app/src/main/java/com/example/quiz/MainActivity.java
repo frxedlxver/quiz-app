@@ -7,14 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String userName;
+    private static final int QUIZ_ACTIVITY_REQ_CODE = 0;
 
-    private TextView nameEntryMsg;
+    private String userName;
+    private int score;
+
     private EditText nameEntry;
     private Button nameEntryConfirmBtn;
 
@@ -42,7 +43,9 @@ public class MainActivity extends AppCompatActivity {
                         Toast.LENGTH_LONG)
                         .show();
             } else {
-                startActivity(new Intent(MainActivity.this, QuizActivity.class));
+                Intent quizIntent = new Intent(MainActivity.this, QuizActivity.class);
+                quizIntent.putExtra("userName", userName);
+                startActivity(quizIntent);
             }
         }
     };

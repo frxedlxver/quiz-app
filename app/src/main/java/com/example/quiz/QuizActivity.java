@@ -118,27 +118,34 @@ public class QuizActivity extends AppCompatActivity {
     View.OnClickListener answerButtonListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            if (progress < questionTotal) {
-                String answer = ((Button) view).getText().toString();
-                String question = questionView.getText().toString();
 
+            String answer = ((Button) view).getText().toString();
+            String question = questionView.getText().toString();
 
-                if (quiz.correctAnswer(question, answer)) {
-                    playCorrectAnimation();
-                    score += 10;
-                } else {
-                    playIncorrectAnimation();
-                }
-
-                progress += 1;
-                updateStatsDisplay();
-                displayNextQuestion();
+            if (quiz.correctAnswer(question, answer)) {
+                playCorrectAnimation();
+                score += 10;
+            } else {
+                playIncorrectAnimation();
             }
-            else {
-                startActivity(new Intent(QuizActivity.this, ResultsActivity.class));
+
+            progress += 1;
+
+            updateStatsDisplay();
+
+            if (progress < questionTotal ) {
+                displayNextQuestion();
+            } else {
+                // package score and username in new intent
+                Intent resultsIntent = new Intent(QuizActivity.this, ResultsActivity.class);
+                resultsIntent.putExtra("score", score);
+                resultsIntent.putExtra("userName", getIntent().getStringExtra("userName"));
+
+                // start new results activity and kill this one
+                startActivity(resultsIntent);
+                finish();
             }
 
         }
     };
-
 }

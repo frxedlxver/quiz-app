@@ -3,4 +3,8 @@
     <string name="name_entry_msg">Enter your name:</string>
     <string name="name_entry_default">your name...</string>
     <string name="name_entry_confirm_btn">start quiz</string>
+    <string name="results_display_msg">you scored</string>
+    <string name="retry_button">RETRY</string>
+    <string name="debug_score_default">0</string>
+    <string name="points_string">points</string>
 </resources>

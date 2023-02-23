@@ -34,38 +34,33 @@ public class Quiz {
     // build lists and answerKey from file if answerKey is empty
     // else, rebuild answers as copy of answersMasterList
     public void initialize(Context c) {
-        if(answerKey.isEmpty()) {
-            try {
+        try {
 
-                BufferedReader quizContentReader = new BufferedReader(
-                        new InputStreamReader(
-                        c.getAssets().open(INFILE_NAME)));
+            BufferedReader quizContentReader = new BufferedReader(
+                    new InputStreamReader(
+                    c.getAssets().open(INFILE_NAME)));
 
-                String line = quizContentReader.readLine();
+            String line = quizContentReader.readLine();
 
-                while(line != null) {
-                    String[] lineArr = line.split(TXT_FILE_DELIMITER);
+            while(line != null) {
+                String[] lineArr = line.split(TXT_FILE_DELIMITER);
 
-                    questions.add(lineArr[TITLE_IDX]);
-                    answersMasterList.add(lineArr[AUTHOR_IDX]);
-                    answers.add(lineArr[AUTHOR_IDX]);
-                    answerKey.put(lineArr[AUTHOR_IDX], lineArr[TITLE_IDX]);
+                questions.add(lineArr[TITLE_IDX]);
+                answersMasterList.add(lineArr[AUTHOR_IDX]);
+                answers.add(lineArr[AUTHOR_IDX]);
+                answerKey.put(lineArr[AUTHOR_IDX], lineArr[TITLE_IDX]);
 
-                    line = quizContentReader.readLine();
-                }
-
-                quizContentReader.close();
-
-                Collections.shuffle(this.answers);
-                Collections.shuffle(this.questions);
-
-            } catch (Exception e) {
-                Log.e("QuizApp", "Exception", e);
+                line = quizContentReader.readLine();
             }
-        } else {
-            Collections.copy(answers, answersMasterList);
-        }
 
+            quizContentReader.close();
+
+            Collections.shuffle(this.answers);
+            Collections.shuffle(this.questions);
+
+        } catch (Exception e) {
+            Log.e("QuizApp", "Exception", e);
+        }
     }
 
     public String getNextAnswer() {

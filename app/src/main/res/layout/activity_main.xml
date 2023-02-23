@@ -15,7 +15,7 @@
         app:layout_constraintWidth_min="wrap">
 
         <TextView
-            android:id="@+id/nameEntryMsg"
+            android:id="@+id/nameEntryMsgView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autoSizeTextType="uniform"
@@ -31,8 +31,7 @@
             android:ems="10"
             android:hint="@string/name_entry_default"
             android:inputType="textPersonName"
-            android:minHeight="60dp"
-            android:text="@string/name_entry_default" />
+            android:minHeight="60dp" />
 
         <Button
             android:id="@+id/nameEntryConfirmBtn"
@@ -42,4 +41,5 @@
             android:minHeight="60sp"
             android:text="@string/name_entry_confirm_btn" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

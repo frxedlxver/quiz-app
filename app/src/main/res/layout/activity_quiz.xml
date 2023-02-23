@@ -15,8 +15,8 @@
         android:elevation="4dp"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="56dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/statisticsWrapper"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/statisticsWrapper"
@@ -52,54 +52,65 @@
     <LinearLayout
         android:id="@+id/questionAnswerWrapper"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
+        android:layout_height="0dp"
+        android:layout_margin="60dp"
+        android:gravity="bottom|center_horizontal"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="@+id/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintWidth_max="300dp"
-        app:layout_constraintWidth_min="wrap">
+        app:layout_constraintWidth_min="wrap"
+        tools:layout_editor_absoluteX="0dp">
 
         <TextView
             android:id="@+id/questionView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="90dp"
-            android:gravity="center"
+            android:layout_marginBottom="60dp"
+            android:gravity="center_horizontal|top"
             android:text="TextView"
             android:textColor="@android:color/black"
             android:textSize="40sp" />
 
-        <Button
-            android:id="@+id/answerButton1"
+        <LinearLayout
+            android:id="@+id/answerWrapper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:height="60dp"
-            android:text="Button" />
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/answerButton2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:height="60dp"
-            android:text="Button" />
+            <Button
+                android:id="@+id/answerButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:height="60dp"
+                android:text="Button" />
 
-        <Button
-            android:id="@+id/answerButton3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:height="60dp"
-            android:text="Button" />
+            <Button
+                android:id="@+id/answerButton4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:height="60dp"
+                android:text="Button" />
 
-        <Button
-            android:id="@+id/answerButton4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:height="60dp"
-            android:text="Button" />
+            <Button
+                android:id="@+id/answerButton3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:height="60dp"
+                android:text="Button" />
+
+            <Button
+                android:id="@+id/answerButton1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:height="60dp"
+                android:text="Button" />
+        </LinearLayout>
 
     </LinearLayout>
 
