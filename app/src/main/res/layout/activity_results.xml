@@ -32,7 +32,7 @@
             android:elegantTextHeight="true"
             android:gravity="center"
             android:text="@string/results_display_msg"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/resultsScoreView"
@@ -43,9 +43,9 @@
             android:gravity="center"
             android:includeFontPadding="false"
             android:paddingTop="40dp"
-            android:text="@string/debug_score_default"
+            android:text="@string/debug_score_default_results"
             android:textColor="@color/black"
-            android:textSize="90dp" />
+            android:textSize="90sp" />
 
         <TextView
             android:id="@+id/pointsMsgView"
@@ -56,7 +56,7 @@
             android:gravity="center"
             android:includeFontPadding="false"
             android:text="@string/points_string"
-            android:textSize="30dp" />
+            android:textSize="30sp" />
 
         <Button
             android:id="@+id/retryBtn"

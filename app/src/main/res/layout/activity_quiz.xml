@@ -16,7 +16,11 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toBottomOf="@+id/statisticsWrapper"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
         android:id="@+id/statisticsWrapper"
@@ -33,7 +37,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:gravity="start"
-            android:text="TextView"
+            android:text="@string/debug_progress_default"
             android:textColor="@android:color/primary_text_light"
             android:textSize="25sp" />
 
@@ -44,7 +48,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:gravity="end"
-            android:text="TextView"
+            android:text="@string/debug_score_default_quiz"
             android:textColor="@android:color/primary_text_light"
             android:textSize="25sp" />
     </LinearLayout>
@@ -68,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="60dp"
             android:gravity="center_horizontal|top"
-            android:text="TextView"
+            android:text="@string/debug_question_default"
             android:textColor="@android:color/black"
             android:textSize="40sp" />
 
@@ -80,20 +84,20 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/answerButton1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:height="60dp"
+                android:text="@string/debug_answer_default1" />
+
+            <Button
                 android:id="@+id/answerButton2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
                 android:height="60dp"
-                android:text="Button" />
-
-            <Button
-                android:id="@+id/answerButton4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp"
-                android:height="60dp"
-                android:text="Button" />
+                android:text="@string/debug_answer_default2" />
 
             <Button
                 android:id="@+id/answerButton3"
@@ -101,15 +105,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
                 android:height="60dp"
-                android:text="Button" />
+                android:text="@string/debug_answer_default3" />
 
             <Button
-                android:id="@+id/answerButton1"
+                android:id="@+id/answerButton4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
                 android:height="60dp"
-                android:text="Button" />
+                android:text="@string/debug_answer_default4" />
+
         </LinearLayout>
 
     </LinearLayout>

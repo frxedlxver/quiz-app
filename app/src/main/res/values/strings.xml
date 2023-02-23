@@ -1,10 +1,22 @@
 <resources>
     <string name="app_name">Quiz</string>
     <string name="name_entry_msg">Enter your name:</string>
-    <string name="name_entry_default">your name...</string>
+    <string name="name_entry_default">your name&#8230;</string>
     <string name="name_entry_confirm_btn">start quiz</string>
     <string name="results_display_msg">you scored</string>
     <string name="retry_button">RETRY</string>
-    <string name="debug_score_default">0</string>
     <string name="points_string">points</string>
+
+
+
+
+    <string name="debug_score_default_results">0</string>
+    <string name="debug_score_default_quiz">SCORE: 0</string>
+    <string name="debug_progress_default">0 / 10</string>
+    <string name="debug_question_default">question</string>
+    <string name="debug_answer_default1">answer 1</string>
+    <string name="debug_answer_default2">answer 2</string>
+    <string name="debug_answer_default3">answer 3</string>
+    <string name="debug_answer_default4">answer 4</string>
+
 </resources>
