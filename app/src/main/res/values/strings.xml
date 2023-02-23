@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Quiz</string>
+    <string name="name_entry_msg">Enter your name:</string>
+    <string name="name_entry_default">your name...</string>
+    <string name="name_entry_confirm_btn">start quiz</string>
+</resources>

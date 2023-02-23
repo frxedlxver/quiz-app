@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintWidth_max="300dp"
+        app:layout_constraintWidth_min="wrap">
+
+        <TextView
+            android:id="@+id/nameEntryMsg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoSizeTextType="uniform"
+            android:elegantTextHeight="true"
+            android:text="@string/name_entry_msg"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editTextNameEntry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="@string/name_entry_default"
+            android:ems="10"
+            android:hint="@string/name_entry_default"
+            android:inputType="textPersonName"
+            android:minHeight="60dp"
+            android:text="@string/name_entry_default" />
+
+        <Button
+            android:id="@+id/nameEntryConfirmBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:minHeight="60sp"
+            android:text="@string/name_entry_confirm_btn" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
