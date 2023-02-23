@@ -78,25 +78,23 @@ public class QuizActivity extends AppCompatActivity {
         progressView.setText(String.format(Locale.CANADA, "%d / %d", progress, questionTotal));
     }
 
-    private ValueAnimator flashingColorAnimation(int flashColor) {
+    private void flashingColorAnimation(int flashColor) {
         int mainColor = getColor(R.color.white);
 
 
         // from https://stackoverflow.com/questions/2614545/animate-change-of-view-background-color-on-android
         ValueAnimator colorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), mainColor, flashColor);
-        colorAnimation.setDuration(250); // milliseconds
+
+        colorAnimation.setDuration(100); // milliseconds
         colorAnimation.setRepeatCount(1);
         colorAnimation.setRepeatMode(ValueAnimator.REVERSE);
-        colorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 
-            @Override
-            public void onAnimationUpdate(ValueAnimator animator) {
-                findViewById(R.id.questionDisplay).setBackgroundColor((int) animator.getAnimatedValue());
-            }
+        colorAnimation.addUpdateListener(
+                animator ->
+                        findViewById(R.id.questionDisplay)
+                        .setBackgroundColor((int) animator.getAnimatedValue()));
 
-        });
-
-        return colorAnimation;
+        colorAnimation.start();
     }
 
     // make screen flash red and shake

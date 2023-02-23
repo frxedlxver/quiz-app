@@ -19,20 +19,17 @@ public class Quiz {
     private static final String TXT_FILE_DELIMITER = "\\$";
 
     private final ArrayList<String> questions;
-    private final ArrayList<String> answersMasterList;
     private final ArrayList<String> answers;
     private final HashMap<String, String> answerKey;
 
     public Quiz() {
-        this.answersMasterList = new ArrayList<>();
         this.questions = new ArrayList<>();
         this.answers = new ArrayList<>();
         this.answerKey = new HashMap<>();
     }
 
 
-    // build lists and answerKey from file if answerKey is empty
-    // else, rebuild answers as copy of answersMasterList
+    // build lists and answerKey from file
     public void initialize(Context c) {
         try {
 
@@ -46,7 +43,6 @@ public class Quiz {
                 String[] lineArr = line.split(TXT_FILE_DELIMITER);
 
                 questions.add(lineArr[TITLE_IDX]);
-                answersMasterList.add(lineArr[AUTHOR_IDX]);
                 answers.add(lineArr[AUTHOR_IDX]);
                 answerKey.put(lineArr[AUTHOR_IDX], lineArr[TITLE_IDX]);
 
@@ -94,7 +90,7 @@ public class Quiz {
     }
 
     public int getTotalQuestionCount() {
-        return answersMasterList.size();
+        return answerKey.size();
     }
 
     public boolean correctAnswer(String author, String title) {
